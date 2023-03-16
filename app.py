@@ -6,11 +6,11 @@ import time
 
 st.set_page_config(page_title='Floor Seating Plan', page_icon='🤍')
 
-st.write("<center><span style='font-size: 100px; font-family: Allura;'>WELCOME</span></center>", unsafe_allow_html=True)
+st.write("<center><span style='font-size: 50px; font-family: Allura; color: gold;'>WELCOME</span></center>", unsafe_allow_html=True)
 st.write("<center><span style='font-size: 25px; font-family: Allura;'>TO THE WEDDING OF</span></center>", unsafe_allow_html=True)
-st.write("<center><span style='font-size: 40px; font-family: Allura;'>M AHMED TUSHAR</span></center>", unsafe_allow_html=True)
+st.write("<center><span style='font-size: 35px; font-family: Allura; color: gold;'>M AHMED TUSHAR</span></center>", unsafe_allow_html=True)
 st.write("<center><span style='font-size: 20px; font-family: Allura;'>&</span></center>", unsafe_allow_html=True)
-st.write("<center><span style='font-size: 40px; font-family: Allura;'>SHUROBI ISLAM</span></center>", unsafe_allow_html=True)
+st.write("<center><span style='font-size: 35; font-family: Allura; color: gold;'>SHUROBI ISLAM</span></center>", unsafe_allow_html=True)
 st.write("")
 st.write("")
 st.write("")
@@ -25,6 +25,22 @@ hide_default_format = """
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
+
+page_bg_img = """
+<style>
+[data-testid='stAppViewContainer'] {
+background: radial-gradient(circle at 50% 50%,#fb99ff, #ff94d7ed, rgba(255,143,167,0.86))
+}
+[data-testid='stHeader'] {
+background: rgba(0,0,0,0);
+}
+</style>
+"""
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+
+
 
 
 excel_file = 'seating_plan.xlsx'
@@ -74,9 +90,10 @@ if st.button('Enter'):
         st.write("")
         st.write("")
         st.write("")
-        st.write("<center><span style='font-size: 40px; font-family: Allura;'>Enjoy the Wedding celebration!</span></center>", unsafe_allow_html=True)
+        st.write("<center><span style='font-size: 30px; font-family: Allura;'>Enjoy the Wedding celebration!</span></center>", unsafe_allow_html=True)
         st.write("<center><span style='font-size: 30px; font-family: Allura;'> ", name, "</span></center>", unsafe_allow_html=True)
-        st.write("<center><span style='font-size: 40px; font-family: Allura;'>Please proceed to table number ", table_number, "!</span></center>", unsafe_allow_html=True)
+        st.write("<center><span style='font-size: 30px; font-family: Allura;'>Please proceed to table number</span></center>", unsafe_allow_html=True)
+        st.write("<center><span style='font-size: 50px; font-family: Allura; color: gold;'><b> ", table_number, "</b></span></center>", unsafe_allow_html=True)
         st.write("")
         st.write("")
         st.write("")
@@ -84,5 +101,4 @@ if st.button('Enter'):
 
     else:
         st.write("Your Phone number is invalid or not given")
-
 
