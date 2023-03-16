@@ -10,7 +10,7 @@ st.write("<center><span style='font-size: 50px; font-family: Allura; color: gold
 st.write("<center><span style='font-size: 25px; font-family: Allura;'>TO THE WEDDING OF</span></center>", unsafe_allow_html=True)
 st.write("<center><span style='font-size: 35px; font-family: Allura; color: gold;'>M AHMED TUSHAR</span></center>", unsafe_allow_html=True)
 st.write("<center><span style='font-size: 20px; font-family: Allura;'>&</span></center>", unsafe_allow_html=True)
-st.write("<center><span style='font-size: 35; font-family: Allura; color: gold;'>SHUROBI ISLAM</span></center>", unsafe_allow_html=True)
+st.write("<center><span style='font-size: 35px; font-family: Allura; color: gold;'>SHUROBI ISLAM</span></center>", unsafe_allow_html=True)
 st.write("")
 st.write("")
 st.write("")
