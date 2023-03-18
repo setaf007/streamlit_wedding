@@ -1,9 +1,11 @@
 [theme] # You have to add this line
 
-primaryColor = '#000000'
+primaryColor = '#ffffff'
 
-backgroundColor = '#769293'
+backgroundColor = '#000000'
 
-secondaryBackgroundColor = '#ffffff'
+secondaryBackgroundColor = '#000000'
 
-textColor = '#6e5959'
+textColor = '#ffffff'
+
+font="Allura"

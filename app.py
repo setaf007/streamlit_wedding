@@ -3,41 +3,50 @@ import streamlit as st
 import plotly.express as px
 from PIL import Image, ImageDraw
 import time
+import base64
 
 st.set_page_config(page_title='Floor Seating Plan', page_icon='🤍')
 
-st.write("<center><span style='font-size: 50px; font-family: Allura; color: gold;'>WELCOME</span></center>", unsafe_allow_html=True)
-st.write("<center><span style='font-size: 25px; font-family: Allura;'>TO THE WEDDING OF</span></center>", unsafe_allow_html=True)
-st.write("<center><span style='font-size: 35px; font-family: Allura; color: gold;'>M AHMED TUSHAR</span></center>", unsafe_allow_html=True)
-st.write("<center><span style='font-size: 20px; font-family: Allura;'>&</span></center>", unsafe_allow_html=True)
-st.write("<center><span style='font-size: 35px; font-family: Allura; color: gold;'>SHUROBI ISLAM</span></center>", unsafe_allow_html=True)
+st.write("<center><span style='font-size: 60px; font-family: Allura; color: white; text-shadow: 3px 3px black;'>WELCOME</span></center>", unsafe_allow_html=True)
+st.write("<center><span style='font-size: 25px; font-family: Allura; color: pink; text-shadow: 3px 3px black;'>TO THE WEDDING OF</span></center>", unsafe_allow_html=True)
+st.write("<center><span style='font-size: 35px; font-family: Allura; color: white; text-shadow: 3px 3px black;'>M AHMED TUSHAR</span></center>", unsafe_allow_html=True)
+st.write("<center><span style='font-size: 20px; font-family: Allura; color: pink; text-shadow: 3px 3px black;'>&</span></center>", unsafe_allow_html=True)
+st.write("<center><span style='font-size: 35px; font-family: Allura; color: white; text-shadow: 3px 3px black;'>SHUROVI ISLAM</span></center>", unsafe_allow_html=True)
 st.write("")
 st.write("")
 st.write("")
 st.write("")
 st.write("")
-st.write("<center><span style='font-size: 30px; font-family: Allura;'>Please enter phone number for seating information</span></center>", unsafe_allow_html=True)
+st.write("<center><span style='font-size: 30px; font-family: Allura; color: pink; text-shadow: 3px 3px black;'>Please enter phone number for seating information</span></center>", unsafe_allow_html=True)
+
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+        ), url(data:image/png;base64,{encoded_string.decode()});
+        background-size: cover
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
+add_bg_from_local('holudpic.jpg')
 
 hide_default_format = """
        <style>
        #MainMenu {visibility: hidden; }
        footer {visibility: hidden;}
+       header {visibility: hidden;}
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
-page_bg_img = """
-<style>
-[data-testid='stAppViewContainer'] {
-background: radial-gradient(circle at 50% 50%,#fb99ff, #ff94d7ed, rgba(255,143,167,0.86))
-}
-[data-testid='stHeader'] {
-background: rgba(0,0,0,0);
-}
-</style>
-"""
-
-st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
 
@@ -48,6 +57,7 @@ sheet_name = 'sheets'
 floorplan = Image.open('floorplan.png')
 
 number = st.text_input('Enter phone number')
+
 
 
 df = pd.read_excel(excel_file,
@@ -61,6 +71,7 @@ def draw_circle(image, xy, radius, color, thickness=1):
     draw = ImageDraw.Draw(image)
     draw.ellipse((xy[0]-radius, xy[1]-radius, xy[0]+radius, xy[1]+radius), outline=color, width=thickness)
 
+#dict with table locations
 table_locations = {
     1: (215, 182), 2: (155, 182), 3: (90, 182), 4: (28, 187), 5: (215, 246), 6: (153, 249), 7: (92, 251), 8: (28, 248), 9: (214, 308), 10: (151, 306),
     11: (215, 366), 12: (155, 368), 13: (94, 362), 14: (29, 360), 15: (214, 432), 16: (153, 433), 17: (97, 425), 18: (32, 427), 19: (215, 492), 20: (151, 492),
@@ -69,7 +80,6 @@ table_locations = {
     41: (381, 250), 42: (442, 251), 43: (506, 252), 44: (316, 310), 45: (378, 311), 46: (319, 368), 47: (378, 371), 48: (438, 355), 49: (503, 356), 50: (318, 433),
     51: (381, 434), 52: (442, 423), 53: (507, 423), 54: (316, 492), 55: (378, 493), 56: (321, 555), 57: (384, 556), 58: (438, 524), 59: (503, 526), 60: (323, 617),
     61: (383, 619), 62: (442, 589), 63: (507, 593), 64: (316, 677), 65: (382, 676), 66: (443, 691), 67: (320, 739), 68: (382, 738), 69: (444, 756), 70: (500, 723)
-
 }
 
 if st.button('Enter'):
@@ -90,10 +100,10 @@ if st.button('Enter'):
         st.write("")
         st.write("")
         st.write("")
-        st.write("<center><span style='font-size: 30px; font-family: Allura;'>Enjoy the Wedding celebration!</span></center>", unsafe_allow_html=True)
-        st.write("<center><span style='font-size: 30px; font-family: Allura;'> ", name, "</span></center>", unsafe_allow_html=True)
-        st.write("<center><span style='font-size: 30px; font-family: Allura;'>Please proceed to table number</span></center>", unsafe_allow_html=True)
-        st.write("<center><span style='font-size: 50px; font-family: Allura; color: gold;'><b> ", table_number, "</b></span></center>", unsafe_allow_html=True)
+        st.write("<center><span style='font-size: 30px; font-family: Allura; color: white; text-shadow: 3px 3px black;'>Enjoy the Wedding celebration!</span></center>", unsafe_allow_html=True)
+        st.write("<center><span style='font-size: 30px; font-family: Allura; color: white; text-shadow: 3px 3px black;'> ", name, "</span></center>", unsafe_allow_html=True)
+        st.write("<center><span style='font-size: 30px; font-family: Allura; color: white; text-shadow: 3px 3px black;'>Please proceed to table number</span></center>", unsafe_allow_html=True)
+        st.write("<center><span style='font-size: 50px; font-family: Allura; color: gold; text-shadow: 3px 3px black;'><b> ", table_number, "</b></span></center>", unsafe_allow_html=True)
         st.write("")
         st.write("")
         st.write("")
