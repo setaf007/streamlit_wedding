@@ -11,7 +11,7 @@ st.write("<center><span style='font-size: 60px; font-family: Allura; color: whit
 st.write("<center><span style='font-size: 25px; font-family: Allura; color: pink; text-shadow: 3px 3px black;'>TO THE WEDDING OF</span></center>", unsafe_allow_html=True)
 st.write("<center><span style='font-size: 35px; font-family: Allura; color: white; text-shadow: 3px 3px black;'>M AHMED TUSHAR</span></center>", unsafe_allow_html=True)
 st.write("<center><span style='font-size: 20px; font-family: Allura; color: pink; text-shadow: 3px 3px black;'>&</span></center>", unsafe_allow_html=True)
-st.write("<center><span style='font-size: 35px; font-family: Allura; color: white; text-shadow: 3px 3px black;'>SHUROVI ISLAM</span></center>", unsafe_allow_html=True)
+st.write("<center><span style='font-size: 35px; font-family: Allura; color: white; text-shadow: 3px 3px black;'>SUROVI ISLAM</span></center>", unsafe_allow_html=True)
 st.write("")
 st.write("")
 st.write("")
@@ -30,7 +30,8 @@ def add_bg_from_local(image_file):
             rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)
         ), url(data:image/png;base64,{encoded_string.decode()});
-        background-size: cover
+        background-size: cover;
+        background-position: center;
     }}
     </style>
     """,
@@ -48,12 +49,8 @@ hide_default_format = """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
 
-
-
-
-
-excel_file = 'seating_plan.xlsx'
-sheet_name = 'sheets'
+excel_file = 'Tushars guest list.xlsx'
+sheet_name = 'QR Code data'
 floorplan = Image.open('floorplan.png')
 
 number = st.text_input('Enter phone number')
@@ -97,6 +94,23 @@ if st.button('Enter'):
         if table_number in table_locations:
             draw_circle(floorplan, table_locations[table_number], 40, "blue", thickness=5)
 
+        if table_number == '20 and 21':
+            draw_circle(floorplan, table_locations[20], 40, "blue", thickness=5)
+            draw_circle(floorplan, table_locations[21], 40, "blue", thickness=5)
+        if table_number == '30 and 31':
+            draw_circle(floorplan, table_locations[30], 40, "blue", thickness=5)
+            draw_circle(floorplan, table_locations[31], 40, "blue", thickness=5)
+        if table_number == '34 and 35':
+            draw_circle(floorplan, table_locations[34], 40, "blue", thickness=5)
+            draw_circle(floorplan, table_locations[35], 40, "blue", thickness=5)
+        if table_number == '51 and 52':
+            draw_circle(floorplan, table_locations[51], 40, "blue", thickness=5)
+            draw_circle(floorplan, table_locations[52], 40, "blue", thickness=5)
+        if table_number == '69 and 70':
+            draw_circle(floorplan, table_locations[69], 40, "blue", thickness=5)
+            draw_circle(floorplan, table_locations[70], 40, "blue", thickness=5)
+
+
         st.write("")
         st.write("")
         st.write("")
@@ -108,7 +122,8 @@ if st.button('Enter'):
         st.write("")
         st.write("")
         st.image(floorplan, caption='Floorplan in OCC', use_column_width=True)
+        st.write("<center><span style='font-size: 30px; font-family: Allura; color: white; text-shadow: 3px 3px black;'>Copyright ©️ HanKin Software, 2023</span></center>", unsafe_allow_html=True)
 
     else:
-        st.write("Your Phone number is invalid or not given")
+        st.write("Your Phone number was not found. Please proceed to the counter for assistance!")
 
